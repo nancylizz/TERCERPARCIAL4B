@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="style.css">
+	 <link href="https://fonts.cdnfonts.com/css/begild" rel="stylesheet">
+     <link rel="stylesheet" href="footer.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+     
+        
+     <title>Pagina personal de Nancy</title>
+</head>
+<style>
+            body{
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                margin: 0;
+            }
+            .quiz-container{
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 0 15px 2px #D4BEBE;
+                width: 500px;
+                overflow: hidden;
+            }
+            .quiz-header{
+                padding: 4rem;
+            }
+            h2{
+                padding: 1rem;
+                text-align: center;
+                margin: 0;
+            }
+            ul{
+                list-style-type: none;
+                padding: 0;
+            }
+            ul li{
+                font-size: 16px;
+                margin: 10px 0;
+            }
+            ul li label{
+                cursor: pointer;
+            }
+            button{
+                background-color: rosybrown;
+                color: white;
+                border: none;
+                display: block;
+                width: 100%;
+                cursor: pointer;
+                font-size: 15px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                padding: 15px;
+            }
+            button:hover{
+                background-color: rgb(192, 104, 141);
+            }
+            button:focus{
+                outline: none;
+                background-color: rgb(207, 115, 177);
+            }
+        </style>
+<body>
+
+	<div style="margin: 24px;">
+		<nav class="navbar navbar-light" style="background-color: #EDD2E0;">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">Inicio</a>
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="footer.html">Menu</a>
+					</li>
+					<li>
+						<a href="formulario.html">Formulario</a>
+					</li>
+                    <li>
+						<a href="perfil.html">Perfil</a>
+					</li>
+					<li>
+						<a href="apimovies.html">Buscador de peliculas</a>
+					</li>
+                    <li>
+						<a href="calculadora.html">Calculadora</a>
+					</li>
+                    <li>
+						<a href="calculadorafisica.html">Fisica</a>
+					</li>
+                    <li>
+						<a href="cuestionario.html">Cuestionario</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+        <div class="quiz-container" id="quiz">
+  <div class="quiz-header">
+    <div class="image-container">
+      <img src="" alt="Imagen" id="question-image" style="width:250px; height:200px;">
+    </div>
+    <h2 id="question">Question text</h2>
+    <ul>
+      <li>
+        <input type="radio" name="answer" id="a" class="answer">
+        <label for="a" id="a_text">Question</label>
+      </li>
+      <li>
+        <input type="radio" name="answer" id="b" class="answer">
+        <label for="b" id="b_text">Question</label>
+      </li>
+      <li>
+        <input type="radio" name="answer" id="c" class="answer">
+        <label for="c" id="c_text">Question</label>
+      </li>
+      <li>
+        <input type="radio" name="answer" id="d" class="answer">
+        <label for="d" id="d_text">Question</label>
+      </li>
+    </ul>
+  </div>
+  <button id="submit">Siguiente</button>
+</div>
+
+        <script>
+            //Este es un arreglo con las preguntas
+            const quizData = [
+                {
+                    question: "Cuantas cuerdas tiene una guitarra acustica?",
+                    image: "img1.jpg",
+                    a:"Cuatro",
+                    b:"Seis",
+                    c:"Ocho",
+                    d:"Tres",
+                    correct: "b"
+                },
+                {
+                    question: "Que cancion hizo popular a Billie Eilish?",
+                    image: "img2.jpg",
+                    a:"Bellyache",
+                    b:"Ocean Eyes",
+                    c:"Bad guy",
+                    d:"Copycat",
+                    correct: "c"
+                },
+                {
+                    question: "Cuantas cuerdas tiene un violin?",
+                    image: "img3.jpg",
+                    a:"Cuatro",
+                    b:"Cinco",
+                    c:"Tres",
+                    d:"Seis",
+                    correct: "a"
+                },
+                {
+                    question: "A que edad murio Kurt Cobain?",
+                    image: "img4.jpg",
+                    a:"30",
+                    b:"21",
+                    c:"23",
+                    d:"27",
+                    correct: "d"
+                },
+                {
+                    question: "Cuantos huesos hay en el cuerpo humano?",
+                    image: "img5.jpg",
+                    a:"200",
+                    b:"206",
+                    c:"189",
+                    d:"299",
+                    correct: "b"
+                },
+                {
+                    question: "Que planeta es el que se encuentra mas cercano al sol?",
+                    image: "img6.jpg",
+                    a:"Tierra",
+                    b:"Jupiter",
+                    c:"Mercurio",
+                    d:"Saturno",
+                    correct: "c"
+                },
+                {
+                    question: "Cual es el animal mas grande de la Tierra?",
+                    image: "img7.jpg",
+                    a:"La ballena azul",
+                    b:"Hipopotamo",
+                    c:"Tiburon",
+                    d:"Rinoseronte",
+                    correct: "a"
+                },
+                {
+                    question: "Cuantos corazones tiene un pulpo?",
+                    image: "img8.jpg",
+                    a:"Uno",
+                    b:"Dos",
+                    c:"Tres",
+                    d:"Cuatro",
+                    correct: "c"
+                },
+                {
+                    question: "Que organo del cuerpo consume mas energia?",
+                    image: "img9.jpg",
+                    a:"Corazon",
+                    b:"Ojos",
+                    c:"Cerebro",
+                    d:"Otro",
+                    correct: "c"
+                },
+                {
+                    question: "Cuantas patas tiene una araña?",
+                    image: "img10.jpg",
+                    a:"Cuatro",
+                    b:"Cinco",
+                    c:"Ocho",
+                    d:"Seis",
+                    correct: "c"
+                },
+                {
+                    question: "En que mes del año, el sol esta mas cerca de la tierra?",
+                    image: "img11.jpg",
+                    a:"Marzo",
+                    b:"Enero",
+                    c:"Agosto",
+                    d:"Diciembre",
+                    correct: "d"
+                },
+                {
+                    question: "Cada cuantos años pasa por la tierra el cometa Halley?",
+                    image: "img12.jpg",
+                    a:"75",
+                    b:"50",
+                    c:"35",
+                    d:"90",
+                    correct: "a"
+                },
+                {
+                    question: "Cuantos litros de sangre tiene una persona adulta?",
+                    image: "img13.jpg",
+                    a:"Entre 2 y 4",
+                    b:"Entre 4 y 6",
+                    c:"10",
+                    d:"7",
+                    correct: "b"
+                },
+                {
+                    question: "Cuantos decimales tiene el numero pi?",
+                    image: "img14.jpg",
+                    a:"Dos",
+                    b:"Cien",
+                    c:"Mil",
+                    d:"Infinito",
+                    correct: "d"
+                },
+                {
+                    question: "Como se llaman los lados de un triangulo rectangulo?",
+                    image: "img15.jpg",
+                    a:"Segmento y angulo",
+                    b:"Adyacente y opuesto",
+                    c:"Tangente y coseno",
+                    d:"Hipotenusa y catetos",
+                    correct: "d"
+                },
+                {
+                    question: "El sol esta compuesto principalmente por:",
+                    image: "img16.jpg",
+                    a:"Luz y energia",
+                    b:"Hidrogeno y hielo",
+                    c:"Asteroides y cometas",
+                    d:"Hiierro y niquel",
+                    correct: "b"
+                },
+                {
+                    question: "Cual es el planeta mas grande del sistema solar?",
+                    image: "img17.jpg",
+                    a:"Jupiter",
+                    b:"Saturno",
+                    c:"Urano",
+                    d:"Neptuno",
+                    correct: "a"
+                },
+                {
+                    question: "Cual es el pais mas grande y pequeño del mundo?",
+                    image: "img18.jpg",
+                    a:"Rusia y Vaticano",
+                    b:"China y Nauru",
+                    c:"Canada y Monaco",
+                    d:"India y San Marino",
+                    correct: "a"
+                },
+                {
+                    question: "Cuanto tiempo tarda la luz del sol en llegar a la tierra?",
+                    image: "img19.jpg",
+                    a:"12 minutos",
+                    b:"1 dia",
+                    c:"12 horas",
+                    d:"8 minutos",
+                    correct: "d"
+                },
+                {
+                    question: "Cuantos años tiene Billie Eilish?",
+                    image: "img20.jpg",
+                    a:"20",
+                    b:"19",
+                    c:"21",
+                    d:"24",
+                    correct: "c"
+                }
+            ];
+const quiz = document.getElementById('quiz');
+const answerEls = document.querySelectorAll('.answer');
+const questionEl = document.getElementById('question');
+const a_text = document.getElementById('a_text');
+const b_text = document.getElementById('b_text');
+const c_text = document.getElementById('c_text');
+const d_text = document.getElementById('d_text');
+const imageEl = document.getElementById('question-image');
+const submitBtn = document.getElementById('submit');
+
+let currentQuiz = 0;
+let score = 0;
+
+loadQuiz();
+
+function loadQuiz() {
+  deselectAnswers();
+
+  const currentQuizData = quizData[currentQuiz];
+
+  questionEl.innerText = currentQuizData.question;
+  a_text.innerText = currentQuizData.a;
+  b_text.innerText = currentQuizData.b;
+  c_text.innerText = currentQuizData.c;
+  d_text.innerText = currentQuizData.d;
+  imageEl.src = currentQuizData.image;
+}
+
+function deselectAnswers() {
+  answerEls.forEach((answerEl) => (answerEl.checked = false));
+}
+
+function getSelected() {
+  let answer;
+
+  answerEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
+    }
+  });
+
+  return answer;
+}
+
+submitBtn.addEventListener('click', () => {
+  const answer = getSelected();
+
+  if (answer) {
+    if (answer === quizData[currentQuiz].correct) {
+      score++;
+    }
+
+    currentQuiz++;
+
+    if (currentQuiz < quizData.length) {
+      loadQuiz();
+    } else {
+      quiz.innerHTML = `
+        <h2>Respondiste ${score}/${quizData.length} preguntas correctamente</h2>
+        <button onclick="location.reload()">Volver a intentar</button>
+      `;
+    }
+  }
+});
+</script>
+
+		<footer>
+			<div class="container">
+				<div class="footer-content">
+					<div class="footer-section about">
+						<h2>Contactame</h2>
+						<p>Si estas interesado en contactarme, puedes hacerlo a travez de cualquiera de las siguientes redes sociales:</p>
+
+						<div class="contact-links">
+							<a href="http://www.facebook.com/miperfil" target="_blank"><i class="fab fa-facebook"></i></a>
+							<a href="http://www.instagram.com/miperfil" target="_blank"><i class="fab fa-instagram"></i></a>
+							<a href="http://www.twitter.com/miperfil" target="_blank"><i class="fab fa-twitter"></i></a>
+							<a href="http://www.snapchat.com/miperfil" target="_blank"><i class="fab fa-snapchat"></i></a>
+							<a href="http://www.youtube.com/miperfil" target="_blank"><i class="fab fa-youtube"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				const socialnetworks = document.querySelectorAll('.contact-links a');
+				socialnetworks.forEach(link => {
+					link.addEventListener('click', e => {
+						e.preventDefault();
+						window.open(link.href, '_blank');
+					});
+				});
+			</script>
+		</footer>
+
+	</div>
+</body>
+</html>
